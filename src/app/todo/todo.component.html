@@ -1,0 +1,48 @@
+<div class="todo-container">
+  <h1>TO DO LIST</h1>
+  <div class="input-container">
+    <input type="text" [(ngModel)]="taskInput" placeholder="Tarefa nova" />
+    <button (click)="addTask()">
+      <span class="material-icons">add</span>
+    </button>
+  </div>
+
+  <div class="counter">
+    <p>Total: {{ totalTasks }}</p>
+    <p>Concluídas: {{ completedTasks }}</p>
+  </div>
+
+  <ul cdkDropList (cdkDropListDropped)="onDrop($event)">
+    <li
+      *ngFor="let task of tasks; let i = index"
+      cdkDrag
+      (cdkDragStarted)="onDragStarted($event)"
+      (cdkDragEnded)="onDragEnded($event)"
+      [@taskAnimation]
+    >
+      <div class="container">
+        <input
+          type="checkbox"
+          [checked]="task.completed"
+          (change)="toggleTaskCompletion(i)"
+          id="task-{{ i }}"
+        />
+        <label for="task-{{ i }}">
+          <span [class.completed]="task.completed">{{ task.name }}</span>
+        </label>
+      </div>
+
+      <div class="control">
+        <button (click)="removeTask(i)" class="delete-btn">
+          <span class="material-icons">delete</span>
+        </button>
+      </div>
+    </li>
+  </ul>
+
+  <button (click)="toggleTheme()" class="theme">
+    <i class="material-icons">
+      {{ currentTheme === "dark" ? "light_mode" : "dark_mode" }}
+    </i>
+  </button>
+</div>

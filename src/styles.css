@@ -1,1 +1,75 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --bg-color-light: #f7f7f7;
+  --text-color-light: #191617;
+  --button-color-light: #1c6cc2;
+  --completed-color-light: gray;
+  --title: #c415c4;
+  --risk: #009859;
+  --bg-image-light: url('/light.jpg');
+}
+
+[data-theme="dark"] {
+  --bg-color-light: #191617;
+  --text-color-light: white;
+  --button-color-light: #017882;
+  --completed-color-light: lightgray;
+  --title: #ff566e;
+  --risk: #2aa98e;
+  --bg-image-light: url('/dark.jpg');
+}
+
+body {
+  background-image: var(--bg-image-light);
+  background-size: cover;
+  background-position: center;
+  color: var(--text-color-light);
+  transition: background-color 0.6s, color 0.6s;
+  font-family: "Source Code Pro", serif;
+  transition: background-image 0.8s ease-in-out, color 0.6s ease-in-out;
+}
+
+button {
+  color: var(--text-color-light); 
+  background: none;
+  border: none;
+  padding: 7px 10px;
+  border: 1px solid var(--completed-color-light);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; 
+}
+
+h1 {
+  color: var(--title);
+  font-size: 2.5em; 
+  font-weight: bold; 
+  letter-spacing: 2px; 
+  background: linear-gradient(90deg, var(--title), var(--button-color-light));
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent; 
+  margin-bottom: 16px; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
+  padding: 10px 0; 
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  padding: 1em;
+  margin-bottom: 8px;
+  color: var(--text-color-light);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 300ms ease;
+}
+
+span {
+  border-bottom: 1px solid var(--completed-color-light);
+  width: 90%;
+  text-align: start;
+}

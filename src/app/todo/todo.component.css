@@ -1,0 +1,151 @@
+.completed {
+  position: relative;
+  color: var(--completed-color-light);
+  /* overflow: hidden;  */
+  text-align: start;
+}
+
+.completed::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--risk);
+  animation: drawLine 1s forwards;
+  transform: translateY(-50%);
+  opacity: 0.6;
+}
+
+@keyframes drawLine {
+  to {
+    width: 100%;
+  }
+}
+
+.todo-container {
+  width: 400px;
+  margin: auto;
+  padding: 1em 5em;
+  text-align: center;
+  border-radius: 8px;
+  transition: transform 1s ease;
+}
+
+.delete-btn,
+.delete-btn > span {
+  border: none;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+label {
+  cursor: pointer;
+  position: relative;
+  padding-left: 30px;
+  text-align: start;
+}
+
+label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--text-color-light);
+  border-radius: 4px;
+  background-color: transparent;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+input[type="checkbox"]:checked + label::before {
+  background-color: var(--bg-color-light);
+  border-color: var(--text-color-light);
+}
+
+input[type="checkbox"]:checked + label::after {
+  content: "✔";
+  position: absolute;
+  left: 5px;
+  top: -1px;
+  font-size: 18px;
+  color: var(--risk);
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.input-container input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid var(--completed-color-light);
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 1s ease;
+  background-color: var(--bg-color-light);
+  color: var(--text-color-light);
+}
+
+.input-container input:focus {
+  outline: none;
+  border-color: var(--risk);
+  box-shadow: 0 0 7px rgba(76, 175, 80, 0.5);
+}
+
+.input-container button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--risk);
+  border: none;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: white;
+}
+
+.input-container span {
+  border: none;
+  width: 100%;
+}
+
+.input-container button:hover {
+  background-color: #2a6d2d;
+}
+
+.input-container button:active {
+  transform: scale(0.95);
+}
+
+.input-container .material-icons {
+  font-size: 24px;
+}
+
+.container {
+  width: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.control {
+  margin-left: auto;
+}
+
+.theme {
+  border: none;
+}
+
+.theme i {
+  font-size: 2.5em;
+}
