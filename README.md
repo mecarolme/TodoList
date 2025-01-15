@@ -28,4 +28,20 @@ Este projeto foi gerado utilizando o [Angular CLI](https://github.com/angular/an
 
 ![Demonstração da Aplicação - Modo Claro](public/light-mode-demo.png)
 
-![Demonstração da Aplicação - Modo Escuro](public/dark-mode-demo.png)<img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat" alt="license" title="Software License"/>
+![Demonstração da Aplicação - Modo Escuro](public/dark-mode-demo.png)
+
+### Instalação
+
+1. Baixe o projeto e no terminal instale as dependências necessárias com o comando:
+
+````
+npm install
+````
+
+2. Após a instalação, inicie o projeto com:
+
+```
+npm start
+```
+
+👉 O projeto será executado em http://localhost:4200 no seu navegador.
