@@ -1,7 +1,7 @@
 <div class="todo-container">
   <h1>TO DO LIST</h1>
   <div class="input-container">
-    <input type="text" [(ngModel)]="taskInput" placeholder="Tarefa nova" />
+    <input type="text" [(ngModel)]="taskInput" placeholder="Tarefa nova" (keyup.enter)="addTask()" />
     <button (click)="addTask()">
       <span class="material-icons">add</span>
     </button>
@@ -16,20 +16,39 @@
     <li
       *ngFor="let task of tasks; let i = index"
       cdkDrag
+      [cdkDragDisabled]="task.isEditing"
       (cdkDragStarted)="onDragStarted($event)"
       (cdkDragEnded)="onDragEnded($event)"
       [@taskAnimation]
     >
       <div class="container">
-        <input
-          type="checkbox"
-          [checked]="task.completed"
-          (change)="toggleTaskCompletion(i)"
-          id="task-{{ i }}"
-        />
-        <label for="task-{{ i }}">
-          <span [class.completed]="task.completed">{{ task.name }}</span>
-        </label>
+        <ng-container *ngIf="!task.isEditing; else editMode">
+          <input
+            type="checkbox"
+            [checked]="task.completed"
+            (change)="toggleTaskCompletion(i)"
+            id="task-{{ i }}"
+          />
+          <label for="task-{{ i }}">
+            <span [class.completed]="task.completed">{{ task.name }}</span>
+          </label>
+          <button (click)="startEditing(i)" class="edit-btn">
+            <span class="material-icons">edit</span>
+          </button>
+        </ng-container>
+
+        <ng-template #editMode>
+          <input
+            type="text"
+            [value]="task.name"
+            class="input-container-item"
+            #editInput
+            (blur)="saveEdit(i, editInput.value)"
+            (keyup.enter)="saveEdit(i, editInput.value)"
+            (keyup.escape)="cancelEdit(i)"
+            autofocus
+          />
+        </ng-template>
       </div>
 
       <div class="control">

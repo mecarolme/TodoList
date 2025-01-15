@@ -1,6 +1,6 @@
 .completed {
   position: relative;
-  color: var(--completed-color-light);
+  color: var(--completed-color);
   /* overflow: hidden;  */
   text-align: start;
 }
@@ -25,12 +25,11 @@
 }
 
 .todo-container {
-  width: 400px;
+  width: 600px;
   margin: auto;
   padding: 1em 5em;
   text-align: center;
   border-radius: 8px;
-  transition: transform 1s ease;
 }
 
 .delete-btn,
@@ -55,15 +54,15 @@ label::before {
   left: 0;
   width: 20px;
   height: 20px;
-  border: 2px solid var(--text-color-light);
+  border: 2px solid var(--text-color);
   border-radius: 4px;
-  background-color: transparent;
-  transition: background-color 0.3s, border-color 0.3s;
+  background: var(--bg-color);
+  transition: background 0.5s ease, color 0.5s ease;
 }
 
 input[type="checkbox"]:checked + label::before {
-  background-color: var(--bg-color-light);
-  border-color: var(--text-color-light);
+  background: var(--bg-color);
+  border-color: var(--text-color);
 }
 
 input[type="checkbox"]:checked + label::after {
@@ -83,15 +82,15 @@ input[type="checkbox"]:checked + label::after {
   margin-bottom: 16px;
 }
 
-.input-container input {
+.input-container input, .input-container-item {
   flex: 1;
   padding: 10px 14px;
-  border: 1px solid var(--completed-color-light);
+  border: 1px solid var(--completed-color);
   border-radius: 4px;
   font-size: 16px;
-  transition: border-color 1s ease;
-  background-color: var(--bg-color-light);
-  color: var(--text-color-light);
+  background: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
 }
 
 .input-container input:focus {
@@ -110,7 +109,6 @@ input[type="checkbox"]:checked + label::after {
   border-radius: 4px;
   padding: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
   color: white;
 }
 
@@ -120,7 +118,8 @@ input[type="checkbox"]:checked + label::after {
 }
 
 .input-container button:hover {
-  background-color: #2a6d2d;
+  opacity: 0.8;
+  transition: 0.5s ease;
 }
 
 .input-container button:active {
@@ -138,6 +137,10 @@ input[type="checkbox"]:checked + label::after {
   justify-content: start;
 }
 
+.edit-btn {
+  margin-left: auto;
+}
+
 .control {
   margin-left: auto;
 }
@@ -148,4 +151,12 @@ input[type="checkbox"]:checked + label::after {
 
 .theme i {
   font-size: 2.5em;
+}
+
+.cdk-drag {
+  cursor: grab; 
+}
+
+.cdk-drop-list-dragging {
+  cursor: grabbing !important; 
 }

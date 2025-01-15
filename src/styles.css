@@ -1,42 +1,37 @@
 :root {
-  --bg-color-light: #f7f7f7;
-  --text-color-light: #191617;
-  --button-color-light: #1c6cc2;
-  --completed-color-light: gray;
+  --bg-color: #eae9e2;
+  --text-color: #191617;
+  --button-color: #1c6cc2;
+  --completed-color: gray;
   --title: #c415c4;
   --risk: #009859;
-  --bg-image-light: url('/light.jpg');
 }
 
 [data-theme="dark"] {
-  --bg-color-light: #191617;
-  --text-color-light: white;
-  --button-color-light: #017882;
-  --completed-color-light: lightgray;
+  --bg-color: #191617;
+  --text-color: white;
+  --button-color: #017882;
+  --completed-color: lightgray;
   --title: #ff566e;
   --risk: #2aa98e;
-  --bg-image-light: url('/dark.jpg');
 }
 
 body {
-  background-image: var(--bg-image-light);
-  background-size: cover;
-  background-position: center;
-  color: var(--text-color-light);
-  transition: background-color 0.6s, color 0.6s;
+  background: var(--bg-color);
+  color: var(--text-color);
   font-family: "Source Code Pro", serif;
-  transition: background-image 0.8s ease-in-out, color 0.6s ease-in-out;
+  overflow: hidden; 
+  height: 100vh;
+  transition: background 0.5s ease, color 0.5s ease;
 }
 
 button {
-  color: var(--text-color-light); 
+  color: var(--text-color); 
   background: none;
   border: none;
   padding: 7px 10px;
-  border: 1px solid var(--completed-color-light);
-  border-radius: 2px;
   cursor: pointer;
-  transition: background-color 0.3s ease; 
+  transition: 0.5s ease;
 }
 
 h1 {
@@ -44,7 +39,7 @@ h1 {
   font-size: 2.5em; 
   font-weight: bold; 
   letter-spacing: 2px; 
-  background: linear-gradient(90deg, var(--title), var(--button-color-light));
+  background: linear-gradient(90deg, var(--title), var(--button-color));
   -webkit-background-clip: text; 
   -webkit-text-fill-color: transparent; 
   margin-bottom: 16px; 
@@ -62,14 +57,13 @@ li {
   display: flex;
   padding: 1em;
   margin-bottom: 8px;
-  color: var(--text-color-light);
+  color: var(--text-color);
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 300ms ease;
 }
 
 span {
-  border-bottom: 1px solid var(--completed-color-light);
   width: 90%;
   text-align: start;
 }
